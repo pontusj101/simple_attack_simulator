@@ -2,7 +2,7 @@ import argparse
 import logging
 import random
 import numpy as np
-from experimenter import Experimenter
+from src/simulator import Simulator
  
 parser = argparse.ArgumentParser(description="This program attempts to (re)learn attack graphs from attack traces created by random attackers wandering about randomly generated graphs.")
 
