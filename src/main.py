@@ -2,7 +2,7 @@ import argparse
 import logging
 import random
 import numpy as np
-from src/simulator import Simulator
+from simulator import Simulator
  
 parser = argparse.ArgumentParser(description="This program attempts to (re)learn attack graphs from attack traces created by random attackers wandering about randomly generated graphs.")
 
@@ -18,8 +18,6 @@ parser.add_argument('--max_graph_size', type=int, default=5, help="The number of
 parser.add_argument('--random_links', type=int, default=3, help="The number of random edges between vertices in addition to a basic tree structure.")
 parser.add_argument('--loglevel', type=str, default='INFO', choices=['DEBUG', 'INFO', 'WARNING', 'ERROR', 'CRITICAL'], help="The level of logs to print to console.")
 parser.add_argument('--loglevel_numeric', type=int, default=-1, help="The numeric level of logs to print to console (as a more granular alternative to the --loglevel flag), 0-100. DEBUG = 10, INFO = 20, etc")
-parser.add_argument('--experiments', type=int, default=1, help="The number of experiments to run. One experiment consists of --n_attackers number of simulations. Will break when inference fails.")
-parser.add_argument('--simulation_batch_size', type=int, default=100, help="The number of attackers to collect experiencees from between inference attempts.")
 parser.add_argument('--random_seed', type=int, default=-1, help="Random seed.")
 
 if __name__ == "__main__":
@@ -43,6 +41,9 @@ if __name__ == "__main__":
         min_graph_size = args.graph_size
         max_graph_size = args.graph_size
 
-    experimenter = Experimenter()
-    experimenter.experiment(args.experiments, args.graph, min_graph_size, max_graph_size, args.random_links, args.n_attackers, args.attack_time, args.attack_origins, args.attack_strategy, args.attack_origins_method, init_simulation_batch_size=args.simulation_batch_size)
+    start = time.time()
+    simulator = Simulator(graph_type=args.graph, graph_size=args.graph_size, random_links=args.random_links)
+    new_experience = simulator.simulate(n_attackers=args.n_attackers, attack_time=args.attack_time, max_attack_origins=args.attack_origins, attack_strategy=args.attack_strategy, origins_method=args.attack_origins_method)
+    current = time.time()
+    logging.info(f"\nSimulation time: {current-start:.0f}s.")
 
