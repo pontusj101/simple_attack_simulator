@@ -4,10 +4,15 @@
     "dockerfile": "Dockerfile"
   },
   "settings": {
-    "terminal.integrated.shell.linux": "/bin/bash"
+    "terminal.integrated.shell.linux": "/bin/bash",
+    "python.pythonPath": "/usr/bin/python3"
   },
   "extensions": [
+    "ms-python.python",
     "ms-azuretools.vscode-docker"
   ],
-  "remoteUser": "vscode"
+  "remoteUser": "vscode",
+  "containerEnv": {
+    "PYTHONPATH": "/workspaces/simple_attack_simulator/src:${PYTHONPATH}"
+  }
 }
