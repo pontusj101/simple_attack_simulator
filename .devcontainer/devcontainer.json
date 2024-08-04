@@ -1,0 +1,13 @@
+{
+  "name": "My Dev Container",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "settings": {
+    "terminal.integrated.shell.linux": "/bin/bash"
+  },
+  "extensions": [
+    "ms-azuretools.vscode-docker"
+  ],
+  "remoteUser": "vscode"
+}
