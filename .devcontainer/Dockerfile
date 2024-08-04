@@ -7,6 +7,9 @@ RUN apt-get update && apt-get install -y python3 python3-pip graphviz
 # Create a symlink for 'python' to 'python3' if needed
 RUN ln -s /usr/bin/python3 /usr/bin/python
 
+# Add a dummy environment variable to invalidate cache
+ENV DUMMY_VAR=1
+
 # Print the current working directory and list files to debug the path issue
 RUN echo "Current working directory:" && pwd
 RUN echo "Contents of the working directory:" && ls -al
