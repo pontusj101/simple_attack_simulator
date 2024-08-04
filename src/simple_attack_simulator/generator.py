@@ -1,7 +1,7 @@
 import random
 import numpy as np
 import logging
-from graph import AttackGraph, AttackStep
+from .graph import AttackGraph, AttackStep
 
 class AttackGraphGenerator:
     def __init__(self):

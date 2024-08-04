@@ -1,15 +1,14 @@
 import random
 import logging
 import time
-from graph import AttackGraph, AttackStep
-from generator import AttackGraphGenerator
-from attacker import Attacker
+from .graph import AttackGraph, AttackStep
+from .generator import AttackGraphGenerator
+from .attacker import Attacker
 from itertools import combinations
-from bcolors import bcolors
  
 class Simulator:
     def __init__(self, graph_type='random', graph_size=10, random_links=3):
-        logging.info(f"{bcolors.OKBLUE}\nOriginal graph{bcolors.ENDC}")
+        logging.info(f"\nOriginal graph")
         generator = AttackGraphGenerator()
         if graph_type == 'random':
             self.graph = generator.random_graph(size=graph_size, random_links=random_links)

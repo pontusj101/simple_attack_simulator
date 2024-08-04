@@ -1,6 +1,8 @@
-from.simulator import Simulator
-from .attack_graph import AttackGraph
-from .attack_simulator import AttackSimulator
-from .logger import Logger
+# src/simple_attack_simulator/__init__.py
 
-__all__ = ['AttackGraph', 'AttackSimulator', 'Logger', 'Simulator']
+from .graph import AttackGraph
+from .simulator import Simulator
+from .generator import AttackGraphGenerator
+from .attacker import Attacker
+
+__all__ = ['AttackGraph', 'Simulator', 'AttackGraphGenerator', 'Attacker']

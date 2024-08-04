@@ -2,7 +2,6 @@ import random
 import numpy as np
 import logging
 import graphviz
-from bcolors import bcolors
 
 class AttackStep:
     def __init__(self, name, graph, step_type='unknown', ttc=None, children=None):
@@ -99,7 +98,7 @@ class AttackGraph:
         return o
 
     def compare(self, other, ttc_error_margin = 1.0):
-        logging.info(f"{bcolors.OKBLUE}\nComparing {self.name} with {other.name}{bcolors.ENDC}")
+        logging.info(f"\nComparing {self.name} with {other.name}")
         is_different = False
         if len(self.attack_steps) != len(other.attack_steps):
             logging.info(f"The graphs have different numbers of attack steps: {self.name} has {len(self.attack_steps)} steps, while {other.name} has {len(other.attack_steps)} steps.\n")
@@ -113,7 +112,7 @@ class AttackGraph:
                         a.log_me(include_parents=True, include_ttc=True, include_type=True, include_children=True)
                         b.log_me(include_parents=True, include_ttc=True, include_type=True, include_children=True)
         if is_different:
-            logging.info(f"{bcolors.FAIL}The graphs differ.{bcolors.ENDC}\n")
+            logging.info(f"The graphs differ.\n")
             return False
         else:
             logging.info("The graphs are identical.\n")
@@ -125,7 +124,7 @@ class AttackGraph:
             g.node(f"{parent.name} ({parent.step_type})")
             for child in parent.children:
                 g.edge(f"{parent.name} ({parent.step_type})", f"{child.name} ({child.step_type})")
-        filepath = f"/root/files/{filename}"
+        filepath = f"{filename}"
         logging.debug(f'\nWriting graph file to {filepath}')
         g.render(filepath, format="pdf")
 
