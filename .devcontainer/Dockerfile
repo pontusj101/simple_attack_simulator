@@ -12,7 +12,7 @@ RUN echo "Current working directory:" && pwd
 RUN echo "Contents of the working directory:" && ls -al
 
 # Copy requirements.txt and install Python packages
-COPY requirements.txt /tmp/requirements.txt
+COPY ../requirements.txt /tmp/requirements.txt
 RUN pip3 install -r /tmp/requirements.txt
 
 # Export paths or set environment variables if needed
