@@ -1,8 +1,12 @@
+import sys
+import os
 import argparse
 import logging
 import time
 import random
 import numpy as np
+# Add the src directory to the Python path
+sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'src'))
 from simple_attack_simulator.simulator import Simulator
  
 parser = argparse.ArgumentParser(description="This program attempts to (re)learn attack graphs from attack traces created by random attackers wandering about randomly generated graphs.")
