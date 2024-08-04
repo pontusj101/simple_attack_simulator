@@ -5,7 +5,7 @@ setup(
     version='0.1.0',
     description='Creates random attack graphs, simulates attacks, and produces logs.',
     author='Pontus Johnson',
-    author_email='your.email@example.com',
+    author_email='pontusj@kth.se',
     url='https://github.com/pontusj101/simple_attack_simulator',
     license='Apache-2.0',
     packages=find_packages(where='src'),
