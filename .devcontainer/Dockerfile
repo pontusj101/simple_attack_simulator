@@ -8,7 +8,7 @@ RUN apt-get update && apt-get install -y python3 python3-pip graphviz
 RUN ln -s /usr/bin/python3 /usr/bin/python
 
 # Copy requirements.txt and install Python packages
-COPY requirements.txt /tmp/requirements.txt
+COPY ../requirements.txt /tmp/requirements.txt
 RUN pip3 install -r /tmp/requirements.txt
 
 # Export paths or set environment variables if needed
